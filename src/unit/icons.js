@@ -43,4 +43,4 @@ export const refresh = <svg width="37" height="30" viewBox="0 0 37 30" fill="non
 </svg>
 
 
-export const home = "בית חרושת"
+export const home = "Factory"

@@ -10,7 +10,6 @@ export const Boxs = () => {
   const dispatch = useDispatch();
   const [activeBox, setActiveBox] = useState(0);
   const { schedule, loading } = useSelector((state) => state.manager);
-
   const handleBoxClick = (boxIndex) => {
     setActiveBox(boxIndex);
   };
@@ -36,8 +35,8 @@ export const Boxs = () => {
           ))} */}
           {shift.map((shift, index) => (
             <Box
-              day={shift.day}
-              key={shift.day}
+              day={shift}
+              key={shift}
               onBoxClick={() => handleBoxClick(index)}
               isActive={activeBox === index}
             />
@@ -46,14 +45,16 @@ export const Boxs = () => {
       </div>
       <div className="flex flex-row justify-center">
         <button className="h-16 w-[960px] bg-red-500 rounded-xl m-1 text-2xl">
-          מוכן
+        Сonfirm
         </button>
         <button className="h-16 w-52 bg-[#929293] rounded-xl m-1 flex items-center justify-center">
           {refresh}
           
         </button>
       </div>
-      <div></div>
+      <div>
+        
+      </div>
     </div>
   );
 };
