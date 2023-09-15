@@ -4,7 +4,7 @@ export const shift = [
       {
         shiftName: "2023-08-28T07:00:00",
         dayDate: "2023-08-28",
-        dayName: "monday",
+        dayName: "2023-08-28",
         shiftStart: "07:00:00",
         shiftEnds: "15:00:00",
         workerNames: ["Vitaly"],
