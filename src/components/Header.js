@@ -32,7 +32,7 @@ export const Header = () => {
         </div>
         
         <div className="text-2xl">
-          <Link to={"/company"} >
+          <Link to={"/company/workers"} >
           {home}
           </Link>
         </div>
