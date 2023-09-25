@@ -8,16 +8,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { weekConfigurate } from "../../future/redux/managerSlice";
 import { dayWeek } from "../../unit/variables";
 
-export const Company = () => {
-  const dispatch = useDispatch();
-  const { configurate, loading, checkDay } = useSelector(
-    (state) => state.manager
-  );
-  const [count, setCount] = useState(1);
-  const [start, setStart] = useState();
-  const [end, SetEnd] = useState();
-  const [workersNumber, setWorkersNumber] = useState(1);
 
+export const Setting = () => {
+  const dispatch = useDispatch();
+  const { configurate, loading, checkDay } = useSelector((state) => state.manager);
+  const [count, setCount] = useState(1);
+  const [start, setStart] = useState(0);
+  const [end, SetEnd] = useState(0);
+  const [workersNumber, setWorkersNumber] = useState(1);
+  
   const clear = () => {
     setWorkersNumber(0);
     setStart("");

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { getMessage } from "../../future/redux/messageSlice";
 import { getAllWorkersFetch } from "../../future/action/fetchAdmin";
 
-export const AllWorkers = () => {
+export const Info = () => {
   const { workers, loading } = useSelector((state) => state.admin);
   const { message } = useSelector((state) => state.message);
   const dispatch = useDispatch();
