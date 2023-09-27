@@ -143,6 +143,4 @@ export const Worker = ({ loading, company }) => {
   );
 };
 
-
-
 // ${"rtl" === "rtl" ? style.text_rtl : style.text_ltr}

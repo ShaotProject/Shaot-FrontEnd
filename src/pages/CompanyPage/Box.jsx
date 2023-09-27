@@ -2,15 +2,32 @@ import React, { useState } from "react";
 import { AddWorker } from "../../components/AddWorker";
 import { BsCalendar2Plus, BsTrash3 } from "react-icons/bs";
 import s from "../../css_module/box.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { сompanySchedule } from "../../future/redux/managerSlice";
 
 export const Box = ({ isActive, onBoxClick, day, load, indexKey }) => {
+  const { schedule } = useSelector((state) => state.manager);
+  const dispatch = useDispatch();
   const [showItems, setShowItems] = useState(false);
-
   const [indexD, setIndexD] = useState(null);
 
-  const handleAddWorker = (index) => {
+  const handleShowModal = (index) => {
     setIndexD(index);
     setShowItems(!showItems);
+  };
+  const handleAddWorker = (name) => {
+    console.log(name, indexKey, indexD);
+    const addWorkerNames = structuredClone(schedule);
+    addWorkerNames[indexKey].shifts[indexD].workerNames.push(name);
+    dispatch(сompanySchedule(addWorkerNames));
+    handleShowModal(null);
+  };
+
+  const handleDeleteWorker = (index, i) => {
+    console.log(indexKey,index,i);
+    const deleteWorkerNames = structuredClone(schedule);
+    deleteWorkerNames[indexKey].shifts[index].workerNames.splice(i,1);
+    dispatch(сompanySchedule(deleteWorkerNames));
   };
 
   return (
@@ -31,10 +48,8 @@ export const Box = ({ isActive, onBoxClick, day, load, indexKey }) => {
       {/* Modal Window With List Workers */}
       {showItems && (
         <AddWorker
-          day={day}
-          indexKey={indexKey}
-          index={indexD}
           handleAddWorker={handleAddWorker}
+          handleShowModal={handleShowModal}
         />
       )}
 
@@ -53,8 +68,8 @@ export const Box = ({ isActive, onBoxClick, day, load, indexKey }) => {
                     <div className={s.workers} key={i}>
                       {isActive ? (
                         <>
-                          <button onClick={() => handleAddWorker(index)}>
-                          <BsTrash3 />
+                          <button onClick={() => handleDeleteWorker(index, i)}>
+                            <BsTrash3 />
                           </button>
                           {name}
                         </>
@@ -73,19 +88,16 @@ export const Box = ({ isActive, onBoxClick, day, load, indexKey }) => {
                     )
                       .fill("פנוי ")
                       .map((placeholder, i) => (
-                        <div
-                          className={s.placeholder}
-                          key={`placeholder_${i}`}
-                        >
+                        <div className={s.placeholder} key={`placeholder_${i}`}>
                           {isActive ? (
                             <>
-                            <button onClick={() => handleAddWorker(index)}>
-                            <BsCalendar2Plus/>
-                            </button>
-                            {placeholder}
-                          </>
+                              <button onClick={() => handleShowModal(index)}>
+                                <BsCalendar2Plus />
+                              </button>
+                              {placeholder}
+                            </>
                           ) : (
-                            <BsCalendar2Plus/>
+                            <BsCalendar2Plus />
                           )}
                         </div>
                       ))

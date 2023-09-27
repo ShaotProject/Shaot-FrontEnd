@@ -7,6 +7,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { weekConfigurate } from "../../future/redux/managerSlice";
 import { dayWeek } from "../../unit/variables";
+import { Loading } from "../../components/Loading";
 
 
 export const Setting = () => {
@@ -52,6 +53,7 @@ export const Setting = () => {
       : [...checkDay, value];
     dispatch(weekConfigurate({ ...configurate, workDays: updatedWorkDays }));
   };
+  console.log(loading,configurate, checkDay);
   const handleSave = () => {
     console.log(configurate.shiftsTime, checkDay);
     const newData = {
@@ -69,6 +71,7 @@ export const Setting = () => {
   }, [dispatch]);
   return (
     <>
+    {!loading && <Loading />}
       <div className="flex flex-row justify-center">
         <div className=" p-4 m-1 overflow-y-auto h-[500px]">
           <table className="border-separate border-spacing-x-7 border-spacing-y-8 ">

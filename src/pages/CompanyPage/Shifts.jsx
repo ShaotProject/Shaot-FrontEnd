@@ -8,12 +8,13 @@ import {
 import { refresh, seting } from "../../unit/icons";
 import { Link } from "react-router-dom";
 import { WeekNames } from "../../components/WeekNames";
+import { Loading } from "../../components/Loading";
 
 export const Shifts = () => {
   const dispatch = useDispatch();
   const [activeBox, setActiveBox] = useState(0);
   const { schedule, loading } = useSelector((state) => state.manager);
-console.log(schedule);
+
   const handleBoxClick = (boxIndex) => {
     setActiveBox(boxIndex);
   };
@@ -28,7 +29,9 @@ console.log(schedule);
   }, [dispatch]);
 
   return (
+    
     <div className="flex flex-col items-center m-12">
+      {!loading && <Loading />}
       <div>
         <div className="flex justify-end">
           <Link to={"/company/setting"} className="text-3xl pr-4">
@@ -37,7 +40,7 @@ console.log(schedule);
         </div>
 
         <div className="flex space-x-4 m-4">
-          {loading &&
+          {
             schedule
               .map((shift, index) => {
                 const reversedIndex = index;

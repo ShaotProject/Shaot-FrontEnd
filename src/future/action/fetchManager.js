@@ -110,6 +110,7 @@ export const getWeekConfigurate = (id) => (dispatch) => {
     .then((data) => dispatch(weekConfigurate(data)))
     .catch((error) => {
       console.log(error);
+      dispatch(loading(false));
     })
 };
 //Get Week Names
@@ -148,7 +149,7 @@ export const fetchPutWeekNames = (id, newData) => (dispatch) => {
 //Post Week Names
 // https://shaotcloud.fly.dev/shaot/company/1800/schedule/save
 export const fetchPostSaveSchedule = (id, newData) => (dispatch) => {
-  console.log(id, newData);
+  console.log(newData);
   dispatch(loading(false));
   fetch(`${baseURL}/company/${id}/schedule/update`, {
     method: "PUT",
