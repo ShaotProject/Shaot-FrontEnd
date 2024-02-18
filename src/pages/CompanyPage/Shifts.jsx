@@ -9,6 +9,7 @@ import { refresh, seting } from "../../unit/icons";
 import { Link } from "react-router-dom";
 import { WeekNames } from "../../components/WeekNames";
 import { Loading } from "../../components/Loading";
+import { ID } from "../../unit/const";
 
 export const Shifts = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,11 @@ export const Shifts = () => {
 
   const handleConfigWeek = () => {
    
-    dispatch(fetchPostSaveSchedule("1800", schedule));
+    dispatch(fetchPostSaveSchedule(ID, schedule));
   };
 
   useEffect(() => {
-    dispatch(getCompanySchedule("1800"));
+    dispatch(getCompanySchedule(ID));
   }, [dispatch]);
 
   return (

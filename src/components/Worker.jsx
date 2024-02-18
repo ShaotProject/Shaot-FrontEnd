@@ -4,6 +4,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { putEmployeeCompany } from "../future/action/fetchManager";
 import style from "../css_module/workers.module.css";
+import { ID } from "../unit/const";
 
 export const Worker = ({ loading, company }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export const Worker = ({ loading, company }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleInvitation = () => {
-    dispatch(putEmployeeCompany(1700, employee.id));
+    dispatch(putEmployeeCompany(ID, employee.id));
   };
 
   const handleClickSearch = () => {

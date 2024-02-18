@@ -5,31 +5,49 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllWorkersFetch } from "../future/action/fetchAdmin";
 import style from "../css_module/workers.module.css";
 
-
-export const AddWorker = ({  handleShowModal,handleAddWorker }) => {
+export const AddWorker = ({ handleShowModal, handleAddWorker }) => {
   const { workers, loading } = useSelector((state) => state.admin);
-  const [search, setSearch] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [search, setSearch] = useState(null);
   const dispatch = useDispatch();
+
   const handleClickSearch = () => {
     if (search) {
       const matchedWorkers = workers.filter((worker) => worker.name === search);
       console.log(matchedWorkers[0].name);
-      handleAddWorker(matchedWorkers[0].name)
-      setSearch("");
+      handleAddWorker(matchedWorkers[0].name);
+      setSearch(null);
+    }
+  };
+  const handleKeyPress = (event) => {
+    if (event.key === 'Escape' && isModalOpen) {
+      handleShowModal(null)
+      setIsModalOpen(false);
     }
   };
 
-  
-
+  document.addEventListener('keydown', handleKeyPress);
+ 
   useEffect(() => {
+    setIsModalOpen(true)
     dispatch(getAllWorkersFetch());
-  }, [dispatch]);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+    
+  }, [dispatch, isModalOpen]);
+
 
   return (
     <div className={style.fullItem}>
-      
-      <div>
-      <div className={style.add_to_card} onClick={()=>handleShowModal(null)}>X</div>
+     
+        <div>
+        <div
+          className={style.add_to_card}
+          onClick={() => handleShowModal(null)}
+        >
+          X
+        </div>
         <div className="p-11 ">
           <Paper
             component="form"
@@ -66,7 +84,7 @@ export const AddWorker = ({  handleShowModal,handleAddWorker }) => {
               ))
             : "Loading....."}
         </div>
-      </div>
+        </div>
     </div>
   );
 };

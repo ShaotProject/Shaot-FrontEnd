@@ -16,7 +16,6 @@ export const Box = ({ isActive, onBoxClick, day, load, indexKey }) => {
     setShowItems(!showItems);
   };
   const handleAddWorker = (name) => {
-    console.log(name, indexKey, indexD);
     const addWorkerNames = structuredClone(schedule);
     addWorkerNames[indexKey].shifts[indexD].workerNames.push(name);
     dispatch(сompanySchedule(addWorkerNames));
@@ -24,7 +23,6 @@ export const Box = ({ isActive, onBoxClick, day, load, indexKey }) => {
   };
 
   const handleDeleteWorker = (index, i) => {
-    console.log(indexKey,index,i);
     const deleteWorkerNames = structuredClone(schedule);
     deleteWorkerNames[indexKey].shifts[index].workerNames.splice(i,1);
     dispatch(сompanySchedule(deleteWorkerNames));
