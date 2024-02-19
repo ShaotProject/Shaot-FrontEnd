@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box } from "./Box";
 import { refresh } from "../../unit/icons";
 import { getEmployeeSchedule } from "../../future/action/fetchEmployee";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { employeeShift } from "../../unit/shift";
 
 export const Shifts = () => {

@@ -35,7 +35,8 @@ export const AddWorker = ({ handleShowModal, handleAddWorker }) => {
       document.removeEventListener('keydown', handleKeyPress);
     };
     
-  }, [dispatch, isModalOpen]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   return (
