@@ -12,9 +12,7 @@ import { ID } from "../../unit/const";
 
 export const Setting = () => {
   const dispatch = useDispatch();
-  const { configurate, loading } = useSelector(
-    (state) => state.manager
-  );
+  const { configurate, loading } = useSelector((state) => state.manager);
   const [count, setCount] = useState(1);
   const [start, setStart] = useState(0);
   const [day, setDay] = useState(0);
@@ -49,7 +47,7 @@ export const Setting = () => {
   };
 
   // const handleCheckboxDay = (key) => {
-  
+
   // };
 
   // console.log(loading, configurate);
@@ -194,9 +192,11 @@ export const Setting = () => {
         </div>
         {/* правый блок */}
         <div className="flex flex-col bg-white justify-between p-4 m-1 border">
-
           {shift_v_2.map((item, key) => (
-            <button className=" w-40 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl"  onClick={ () => setDay(key)}>
+            <button
+              className=" w-40 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl"
+              onClick={() => setDay(key)}
+            >
               {item.dayName}
             </button>
           ))}
