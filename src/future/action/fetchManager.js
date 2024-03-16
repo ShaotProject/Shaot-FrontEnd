@@ -12,7 +12,7 @@ const baseURL = "https://shaotcloud.fly.dev/shaot";
 //Get Company By Id
 export const getCompanyByIdFetch = (id) => (dispatch) => {
   dispatch(loading(false));
-  fetch(`${baseURL}/company/${id}`, { method: "GET", mode: "same-origin" })
+  fetch(`${baseURL}/company/${id}`, { method: "GET", mode: "*cors" })
     .then((res) => res.json())
     .then((data) => {
       if (data.errorCode) {
@@ -31,7 +31,7 @@ export const postNewCompany = (newData) => (dispatch) => {
   dispatch(loading(false));
   fetch(`${baseURL}/company`, {
     method: "POST",
-    mode: "same-origin",
+    mode: "*cors",
     headers: {
       "Content-Type": "application/json", // Указываем, что отправляем JSON
     },
@@ -53,7 +53,7 @@ export const putEmployeeCompany = (id, employee) => (dispatch) => {
   dispatch(loading(false));
   fetch(`${baseURL}/company/${id}/worker/${employee}`, {
     method: "PUT",
-    mode: "same-origin",
+    mode: "*cors",
     headers: {
       "Content-Type": "application/json",
     },
@@ -68,7 +68,7 @@ export const putEmployeeCompany = (id, employee) => (dispatch) => {
 //Get Company Schedule for week
 export const getCompanySchedule = (id) => (dispatch) => {
   dispatch(loading(false));
-  fetch(`${baseURL}/company/${id}/schedule`, { method: "GET", mode: "same-origin" })
+  fetch(`${baseURL}/company/${id}/schedule`, { method: "GET", mode: "*cors" })
     .then((res) => res.json())
     .then((data) => dispatch(сompanySchedule(data)))
     .catch((error) => {
@@ -80,7 +80,7 @@ export const getCompanySchedule = (id) => (dispatch) => {
 export const deleteEmployeeCompany = (id, employee) => (dispatch) => {
   fetch(`${baseURL}/company/${id}/worker/${employee}`, {
     method: "DELETE",
-    mode: "same-origin",
+    mode: "*cors",
   })
     .then((response) => response.data)
     .catch((error) => {
@@ -93,7 +93,7 @@ export const putConfigurateSchedule = (id, newData) => (dispatch) => {
   dispatch(loading(false));
   fetch(`${baseURL}/company/${id}/schedule/configure`, {
     method: "PUT",
-    mode: "same-origin",
+    mode: "*cors",
     headers: {
       "Content-Type": "application/json",
     },
@@ -111,7 +111,7 @@ export const getWeekConfigurate = (id) => (dispatch) => {
   dispatch(loading(false));
   fetch(`${baseURL}/company/${id}/configuration`, {
     method: "GET",
-    mode: "same-origin",
+    mode: "*cors",
   })
     .then((res) => res.json())
     .then((data) => dispatch(weekConfigurate(data)))
@@ -123,7 +123,7 @@ export const getWeekConfigurate = (id) => (dispatch) => {
 //Get Week Names
 export const fetchWeekNames = (id) => (dispatch) => {
   dispatch(loading(false));
-  fetch(`${baseURL}/company/${id}/week/names`, { method: "GET", mode: "same-origin" })
+  fetch(`${baseURL}/company/${id}/week/names`, { method: "GET", mode: "*cors" })
     .then((res) => res.json())
     .then((data) => dispatch(weekNames(data)))
     .catch((error) => {
@@ -138,7 +138,7 @@ export const fetchPutWeekNames = (id, newData) => (dispatch) => {
   dispatch(loading(false));
   fetch(`${baseURL}/company/${id}/week/period`, {
     method: "POST",
-    mode: "same-origin",
+    mode: "*cors",
     headers: {
       "Content-Type": "application/json",
     },
@@ -160,7 +160,7 @@ export const fetchPostSaveSchedule = (id, newData) => (dispatch) => {
   dispatch(loading(false));
   fetch(`${baseURL}/company/${id}/schedule/update`, {
     method: "PUT",
-    mode: "same-origin",
+    mode: "*cors",
     headers: {
       "Content-Type": "application/json",
     },
