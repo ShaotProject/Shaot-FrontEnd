@@ -10,7 +10,7 @@ export const Box = ({ isActive, onBoxClick, day, load, indexKey }) => {
   const dispatch = useDispatch();
   const [showItems, setShowItems] = useState(false);
   const [indexD, setIndexD] = useState(null);
-
+console.log(day);
   const handleShowModal = (index) => {
     setIndexD(index);
     setShowItems(!showItems);

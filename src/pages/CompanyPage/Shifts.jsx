@@ -21,7 +21,6 @@ export const Shifts = () => {
   };
 
   const handleConfigWeek = () => {
-   
     dispatch(fetchPostSaveSchedule(ID, schedule));
   };
 
@@ -30,7 +29,6 @@ export const Shifts = () => {
   }, [dispatch]);
 
   return (
-    
     <div className="flex flex-col items-center m-12">
       {!loading && <Loading />}
       <div>
@@ -41,21 +39,22 @@ export const Shifts = () => {
         </div>
 
         <div className="flex space-x-4 m-4">
-          {
-            schedule
-              .map((shift, index) => {
-                const reversedIndex = index;
-                return (
-                    <Box
-                      load={loading}
-                      day={shift}
-                      indexKey={reversedIndex}
-                      key={reversedIndex}
-                      onBoxClick={() => handleBoxClick(index)}
-                      isActive={activeBox === index}
-                    />
-                );
-              })}
+          {schedule.map((shift, index) => {
+            const reversedIndex = index;
+            if (shift.shifts.length) {
+              return (
+                <Box
+                  load={loading}
+                  day={shift}
+                  indexKey={reversedIndex}
+                  key={reversedIndex}
+                  onBoxClick={() => handleBoxClick(index)}
+                  isActive={activeBox === index}
+                />
+              );
+            }
+            return null; 
+          })}
         </div>
       </div>
       <div className="flex flex-row justify-center">

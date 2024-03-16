@@ -18,7 +18,6 @@ export const Setting = () => {
   const [day, setDay] = useState(0);
   const [end, SetEnd] = useState(null);
   const [workersNumber, setWorkersNumber] = useState(null);
-
   const clear = () => {
     setWorkersNumber(0);
     setStart("");
@@ -28,21 +27,27 @@ export const Setting = () => {
     const newItem = {
       start: start + ":00:00",
       end: end + ":00:00",
-      workersNumberPerShift: workersNumber,
+      change: workersNumber,
     };
-    const newArr = [...configurate.shiftsTime, newItem];
-    console.log(newArr);
+    const newArr = [...configurate[day].shifts, newItem];
     newArr.sort((a, b) => parseInt(a.start) - parseInt(b.start));
-    console.log(newArr);
+    const newConfigurate = [...configurate];
+    newConfigurate[day] = { ...configurate[day], shifts: newArr };
+    console.log(newConfigurate);
     clear();
     setCount(count + 1);
-    dispatch(weekConfigurate({ ...configurate, shiftsTime: newArr }));
+    dispatch(weekConfigurate(newConfigurate));
   };
 
   const deleteTable = (key) => {
-    const newArr = configurate.filter((items, index) => index !== key);
-
-    dispatch(weekConfigurate(newArr));
+    const newArr = configurate[day].shifts.filter(
+      (items, index) => index !== key
+    );
+    console.log(newArr);
+    //newArr.sort((a, b) => parseInt(a.start) - parseInt(b.start));
+    const newConfigurate = [...configurate];
+    newConfigurate[day] = { ...configurate[day], shifts: newArr };
+    dispatch(weekConfigurate(newConfigurate));
     setCount(count - 1);
   };
 
@@ -81,48 +86,47 @@ export const Setting = () => {
             <tbody>
               {/* block for map */}
 
-              {/* {configurate &&
-                configurate.map((item, key) => ( */}
-              {shift_v_2[day].shifts.map((item, key) => (
-                <tr key={key}>
-                  <td className="text-center">
-                    <div className=" w-22 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl">
-                      {key}
-                    </div>
-                  </td>
-                  <td className="text-center">
-                    <input
-                      type="text"
-                      disabled
-                      value={item.shiftStart}
-                      className="border rounded-xl w-28 h-12 text-2xl text-center"
-                    />
-                  </td>
-                  <td className="text-center">
-                    <input
-                      type="text"
-                      disabled
-                      value={item.shiftEnd}
-                      className="border text-center w-28 h-12 rounded-xl text-2xl"
-                    />
-                  </td>
-                  <td className="text-center">
-                    <div className="flex flex-row justify-center ">
+              {configurate &&
+                configurate[day].shifts.map((item, key) => (
+                  <tr key={key}>
+                    <td className="text-center">
+                      <div className=" w-22 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl">
+                        {key}
+                      </div>
+                    </td>
+                    <td className="text-center">
                       <input
                         type="text"
                         disabled
-                        value={item.workerNeeded}
-                        className="border rounded-xl text-center text-2xl w-14"
+                        value={item.start}
+                        className="border rounded-xl w-28 h-12 text-2xl text-center"
                       />
-                    </div>
-                  </td>
-                  <td className="text-center text-2xl">
-                    <button onClick={() => deleteTable(key)}>
-                      <BsTrash3 />
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td className="text-center">
+                      <input
+                        type="text"
+                        disabled
+                        value={item.end}
+                        className="border text-center w-28 h-12 rounded-xl text-2xl"
+                      />
+                    </td>
+                    <td className="text-center">
+                      <div className="flex flex-row justify-center ">
+                        <input
+                          type="text"
+                          disabled
+                          value={item.change}
+                          className="border rounded-xl text-center text-2xl w-14"
+                        />
+                      </div>
+                    </td>
+                    <td className="text-center text-2xl">
+                      <button onClick={() => deleteTable(key)}>
+                        <BsTrash3 />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               <tr>
                 <td className="w-20 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl">
                   <button onClick={() => addTable()}>
@@ -192,14 +196,15 @@ export const Setting = () => {
         </div>
         {/* правый блок */}
         <div className="flex flex-col bg-white justify-between p-4 m-1 border">
-          {shift_v_2.map((item, key) => (
-            <button
-              className=" w-40 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl"
-              onClick={() => setDay(key)}
-            >
-              {item.dayName}
-            </button>
-          ))}
+          {configurate &&
+            configurate.map((item, key) => (
+              <button
+                className=" w-40 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl"
+                onClick={() => setDay(key)}
+              >
+                {item.dayName}
+              </button>
+            ))}
         </div>
       </div>
       {/* ------------ */}

@@ -254,63 +254,63 @@ export const shift_v_2 = [
     dayDate: "2023-09-02",
     dayName: "SUNDAY",
     shifts: [
-      { shiftStart: "05:00:00", shiftEnd: "13:00:00", workerNeeded: 3 },
-      { shiftStart: "13:00:00", shiftEnd: "21:00:00", workerNeeded: 3 },
-      { shiftStart: "21:00:00", shiftEnd: "05:00:00", workerNeeded: 3},
+      { start: "05:00:00", end: "13:00:00", change: 3 },
+      { start: "13:00:00", end: "21:00:00", change: 3 },
+      { start: "21:00:00", end: "05:00:00", change: 3},
     ],
   },
   {
     dayDate: "2023-09-02",
     dayName: "MONDAY",
     shifts: [
-      { shiftStart: "05:00:00", shiftTime: "13:00:00", workerNeeded: 3 },
-      // { shiftStart: "13:00:00", shiftEnd: "21:00:00", workerNeeded: 3 },
-      { shiftStart: "21:00:00", shiftEnd: "05:00:00", workerNeeded: 3},
+      { start: "05:00:00", end: "13:00:00", change: 3 },
+      { start: "13:00:00", end: "21:00:00", change: 3 },
+      { start: "21:00:00", end: "05:00:00", change: 3},
     ],
   },
   {
     dayDate: "2023-09-02",
     dayName: "TUENSDAY",
     shifts: [
-      { shiftStart: "05:00:00", shiftTime: "13:00:00", workerNeeded: 3 },
-      { shiftStart: "13:00:00", shiftEnd: "21:00:00", workerNeeded: 3 },
-      { shiftStart: "21:00:00", shiftEnd: "05:00:00", workerNeeded: 3},
+      { start: "05:00:00", end: "13:00:00", change: 3 },
+      { start: "13:00:00", end: "21:00:00", change: 3 },
+      { start: "21:00:00", end: "05:00:00", change: 3},
     ],
   },
   {
     dayDate: "2023-09-02",
     dayName: "WEDNESDAY",
     shifts: [
-      { shiftStart: "05:00:00", shiftTime: "13:00:00", workerNeeded: 3 },
-      { shiftStart: "13:00:00", shiftEnd: "21:00:00", workerNeeded: 3 },
-      { shiftStart: "21:00:00", shiftEnd: "05:00:00", workerNeeded: 3},
+      { start: "05:00:00", end: "13:00:00", change: 3 },
+      { start: "13:00:00", end: "21:00:00", change: 3 },
+      { start: "21:00:00", end: "05:00:00", change: 3},
     ],
   },
   {
     dayDate: "2023-09-02",
     dayName: "THURSDAY",
     shifts: [
-      { shiftStart: "05:00:00", shiftTime: "13:00:00", workerNeeded: 3 },
-      { shiftStart: "13:00:00", shiftEnd: "21:00:00", workerNeeded: 3 },
-      { shiftStart: "21:00:00", shiftEnd: "05:00:00", workerNeeded: 3},
+      { start: "05:00:00", end: "13:00:00", change: 3 },
+      { start: "13:00:00", end: "21:00:00", change: 3 },
+      { start: "21:00:00", end: "05:00:00", change: 3},
     ],
   },
   {
     dayDate: "2023-09-02",
     dayName: "FRIDAY",
     shifts: [
-      { shiftStart: "05:00:00", shiftTime: "13:00:00", workerNeeded: 3 },
-      { shiftStart: "13:00:00", shiftEnd: "21:00:00", workerNeeded: 3 },
-      { shiftStart: "21:00:00", shiftEnd: "05:00:00", workerNeeded: 3},
+      { start: "05:00:00", end: "13:00:00", change: 3 },
+      { start: "13:00:00", end: "21:00:00", change: 3 },
+      { start: "21:00:00", end: "05:00:00", change: 3},
     ],
   },
   {
     dayDate: "2023-09-02",
     dayName: "SATURDAY",
     shifts: [
-      { shiftStart: "05:00:00", shiftTime: "13:00:00", workerNeeded: 3 },
-      { shiftStart: "13:00:00", shiftEnd: "21:00:00", workerNeeded: 3 },
-      { shiftStart: "21:00:00", shiftEnd: "05:00:00", workerNeeded: 3},
+      { start: "05:00:00", end: "13:00:00", change: 3 },
+      { start: "13:00:00", end: "21:00:00", change: 3 },
+      { start: "21:00:00", end: "05:00:00", change: 3},
     ],
   },
 ];
@@ -320,3 +320,56 @@ export const shift_v_2 = [
 // shiftEnd: "13:00:00";
 // shiftStart: "05:00:00";
 // workerNeeded: 3;
+
+
+// [
+//   {
+//       "dayDate": "2024-03-07",
+//       "dayName": "SUNDAY",
+//       "shifts": [
+//           { "start": "07:00:00", "end": "15:00:00", "change": 1 },
+//           { "start": "15:00:00", "end": "23:00:00", "change": 1 },
+//           { "start": "23:00:00", "end": "07:00:00", "change": 1 }
+//       ]
+//   },
+//    {
+//       "dayDate": "2024-03-07",
+//       "dayName": "MONDAY",
+//       "shifts": [
+         
+//       ]
+//   }, {
+//       "dayDate": "2024-03-07",
+//       "dayName": "TUENSDAY",
+//       "shifts": [
+        
+//       ]
+//   },
+//   {
+//     "dayDate": "2024-03-07",
+//     "dayName": "WEDNESDAY",
+//     "shifts": [
+      
+//     ]
+// },{
+//   "dayDate": "2024-03-07",
+//   "dayName": "THURSDAY",
+//   "shifts": [
+    
+//   ]
+// },
+// {
+//   "dayDate": "2024-03-07",
+//   "dayName": "FRIDAY",
+//   "shifts": [
+    
+//   ]
+// },
+// {
+//   "dayDate": "2024-03-07",
+//   "dayName": "SATURDAY",
+//   "shifts": [
+    
+//   ]
+// }
+// ]
