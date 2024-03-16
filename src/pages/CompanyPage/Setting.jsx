@@ -50,12 +50,6 @@ export const Setting = () => {
     setCount(count - 1);
   };
 
-  // const handleCheckboxDay = (key) => {
-
-  // };
-
-  // console.log(loading, configurate);
-
   const handleSave = () => {
     dispatch(putConfigurateSchedule(ID, configurate));
     dispatch(weekConfigurate(configurate));
@@ -198,7 +192,11 @@ export const Setting = () => {
           {configurate &&
             configurate.map((item, key) => (
               <button
-                className=" w-40 h-12 rounded-xl bg-[#E7EFEE] text-center text-2xl"
+                className={
+                  day === key
+                    ? "w-40 h-12 rounded-xl bg-[#0A3D45] text-white text-center text-2xl "
+                    : "w-40 h-12 rounded-xl bg-[#1F8A83] text-white text-center text-2xl hover:bg-[#0A3D45] "
+                }
                 onClick={() => setDay(key)}
               >
                 {item.dayName}
@@ -209,12 +207,12 @@ export const Setting = () => {
       {/* ------------ */}
       <div className="flex flex-row p-4 m-1 justify-center text-white text-center text-2xl">
         <button
-          className="w-40 h-12 rounded-xl  m-1   bg-[#99C2BD] hover:bg-[#0A3D45]"
+          className="w-40 h-12 rounded-xl  m-1   bg-[#1F8A83] hover:bg-[#0A3D45] "
           onClick={handleSave}
         >
           Save
         </button>
-        <button className="w-40 h-12 rounded-xl  m-1 bg-[#99C2BD] hover:bg-[#0A3745]">
+        <button className="w-40 h-12 rounded-xl  m-1 bg-[#E0292A] hover:bg-[#0A3D45] ">
           Clear
         </button>
       </div>
