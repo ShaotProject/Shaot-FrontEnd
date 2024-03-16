@@ -6,7 +6,6 @@ import {
 } from "../../future/action/fetchManager";
 import { useDispatch, useSelector } from "react-redux";
 import { weekConfigurate } from "../../future/redux/managerSlice";
-import { shift_v_2 } from "../../unit/shift";
 import { Loading } from "../../components/Loading";
 import { ID } from "../../unit/const";
 
