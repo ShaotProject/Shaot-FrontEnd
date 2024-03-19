@@ -57,7 +57,7 @@ const baseURL = "https://shaotcloud.fly.dev/shaot";
 
 export const getEmployeeSchedule = (id, comp) => (dispatch) => {
   dispatch(loading(true)); 
-  fetch(`${baseURL}/worker/${id}/company/${comp}schedule`, { method: "GET" })
+  fetch(`${baseURL}/worker/${id}/company/${comp}/schedule`, { method: "GET" })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
